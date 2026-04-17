@@ -1,0 +1,7 @@
+Connect Now,
+
+- loading the data by referencing column names doesnt make it dynamic
+its better to write a python code that automatically reads source tables and columns,
+then creates the name based on the reading from the source.
+
+-
