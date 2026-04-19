@@ -1,9 +1,29 @@
-Connect Now,
+Connect Now
 
+From the pipeline design, I can understand that the failures began at the staging layer after the backend update, 
+and this is due to a schema change in the application source MySQL database thats feeding into the Google query warehouse
+Columns were renamed, some were changed and some data types of the columns were changed too. 
+
+
+Its important to introduce Data Contracts
+include tests like: tests:
+  - not_null
+  - accepted_values, source freshness + schema tests
+Version your data
+Use CDC tools to replicate schema changes automatically
+dbt run failure alerts and schema drift detection tools*
+
+Long term, I’d implement data contracts, schema monitoring, and pre-release validation to prevent this class of issue.
+
+Block deploy if breaking changes detected
+
+Better communication
+
+
+
+Also:
 - loading the data by referencing column names doesnt make it dynamic
 its better to write a python code that automatically reads source tables and columns,
 then creates the name based on the reading from the source.
 
 -also not okay to use select * but to reference the column names 
-
-- 
